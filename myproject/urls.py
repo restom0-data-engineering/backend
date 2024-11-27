@@ -62,4 +62,5 @@ urlpatterns = [
         analysis.get_product_sucessorder_percentage_analysis,
         name="get_product_sucessorder_percentage_analysis",
     ),
+    path("hello-world/", views.hello_world, name="hello_world"),
 ]
