@@ -62,4 +62,9 @@ urlpatterns = [
         analysis.get_product_sucessorder_percentage_analysis,
         name="get_product_sucessorder_percentage_analysis",
     ),
+    path(
+        "code-analysis/",
+        analysis.get_code_analysis,
+        name="get_code_analysis",
+    ),
 ]
