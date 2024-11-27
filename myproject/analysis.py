@@ -248,9 +248,12 @@ FROM ( SELECT explode (
         "successorder.csv", index=False
     )
     data = {
-        "success_order_percentage": df_merged[
+        "top_10_product": df_merged[
             ["productdisplayname", "success_order_percentage"]
-        ].to_dict(orient="records")
+        ].to_dict(orient="records"),
+        "bot_10_product": df_merged[
+            ["productdisplayname", "success_order_percentage"]
+        ].to_dict(orient="records"),
     }
 
     return JsonResponse(data)
