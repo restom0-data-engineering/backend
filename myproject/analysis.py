@@ -286,6 +286,43 @@ def keyword_analysis_bymonth(request, month=None):
     return JsonResponse(data)
 
 
+def get_code_analysis(request):
+    # Đây là ví dụ
+    data_prime = {
+        "promo_code": ["None", "AZ2022", "BUYMORE"],
+        "TOTAL_AMOUNT": [3.788477e+10, 6.675745e+09, 4.962927e+09],
+        "PROMO_AMOUNT": [0, 60119641, 44486761],
+        "COUNT": [0, 12005, 8942],
+        "START_DAY": ["2016-08-07T09:22:39.501036Z", "2016-08-08T06:25:24.341833Z", "2016-08-08T03:46:50.958678Z"],
+        "END_DAY": ["2022-07-31T23:16:43.885323Z", "2022-07-29T22:16:37.169906Z", "2022-07-29T12:48:21.123459Z"]
+    }
+    df = pd.DataFrame(data_prime)
+    
+    # Gửi Json Response
+    data = df.to_dict(orient="records")
+    print(data)
+    return JsonResponse(data, safe=False)
+    # Kết nối đến Hive
+    conn = get_hive_connection()
+
+    # Truy vấn lấy dữ liệu khách hàng từ bảng 'transaction' và 'customer'
+    query = """
+        SELECT promo_code, SUM(total_amount) AS TOTAL_AMOUNT, 
+        SUM(promo_amount) AS PROMO_AMOUNT, COUNT(promo_code) AS COUNT, 
+        MIN(created_at) as START_DAY, MAX(created_at) as END_DAY 
+        FROM transactions
+        WHERE payment_status = 'Success' 
+        GROUP BY promo_code
+    """
+    df = pd.read_sql(query, conn)
+
+    if df.empty:
+        return JsonResponse({"error": "No data found"}, status=400)
+
+    # Gửi Json Response
+    data = df.to_dict(orient="records")
+    return JsonResponse(data)
+
 def customer_segmentation(request):
     # Kết nối đến Hive
     conn = get_hive_connection()
