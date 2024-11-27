@@ -67,4 +67,5 @@ urlpatterns = [
         analysis.get_code_analysis,
         name="get_code_analysis",
     ),
+    path("hello-world/", views.hello_world, name="hello_world"),
 ]

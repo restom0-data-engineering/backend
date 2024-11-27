@@ -62,3 +62,7 @@ def fetch_click_stream_data(request):
     df = pd.read_sql(query, conn)
     data = df.to_dict(orient="records")
     return JsonResponse(data, safe=False)
+
+
+def hello_world(request):
+    return JsonResponse({"message": "Hello World!"})
