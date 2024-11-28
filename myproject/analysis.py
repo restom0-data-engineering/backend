@@ -5,6 +5,18 @@ from .views import get_hive_connection
 
 
 def customer_analysis(request):
+    # Đây là ví dụ
+    data_prime = {
+        "total_customers": [300, 200],
+        "gender_distribution": ["M", "F"],
+        "country_distribution": ["None", "Now"]
+    }
+    df = pd.DataFrame(data_prime)
+    
+    # Gửi Json Response
+    data = df.to_dict(orient="records")
+    return JsonResponse(data, safe=False)
+    # Kết nối với Hive
     # Connect to Hive
     conn = get_hive_connection()
     query = """
@@ -171,6 +183,18 @@ def multiple_analysis(request):
 
 
 def keyword_analysis(request):
+    # Đây là ví dụ
+    data_prime = {
+        "month": [1, 1, 2],
+        "search_keywords": ["None", "AZ2022", "BUYMORE"],
+        "search_count": [100, 200, 100]
+    }
+    df = pd.DataFrame(data_prime)
+    
+    # Gửi Json Response
+    data = df.to_dict(orient="records")
+    return JsonResponse(data, safe=False)
+    # Kết nối với Hive
     conn = get_hive_connection()
     query = """
     SELECT month, search_keywords, search_count
@@ -300,7 +324,6 @@ def get_code_analysis(request):
     
     # Gửi Json Response
     data = df.to_dict(orient="records")
-    print(data)
     return JsonResponse(data, safe=False)
     # Kết nối đến Hive
     conn = get_hive_connection()
