@@ -66,3 +66,4 @@ def fetch_click_stream_data(request):
 
 def hello_world(request):
     return JsonResponse({"message": "Hello World!"})
+
