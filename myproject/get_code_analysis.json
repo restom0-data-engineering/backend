@@ -1,0 +1,74 @@
+[
+  {
+    "promo_code": "",
+    "total_amount": 277764354024.0,
+    "promo_amount": 0.0,
+    "count": 503365,
+    "start_day": "2016-06-30T23:18:44.792905Z",
+    "end_day": "2022-07-31T23:59:19.821469Z"
+  },
+  {
+    "promo_code": "AZ2022",
+    "total_amount": 46890395519.0,
+    "promo_amount": 426308202.0,
+    "count": 85485,
+    "start_day": "2016-07-04T00:58:13.525069Z",
+    "end_day": "2022-07-29T23:51:29.261426Z"
+  },
+  {
+    "promo_code": "BUYMORE",
+    "total_amount": 34930351637.0,
+    "promo_amount": 319287437.0,
+    "count": 64029,
+    "start_day": "2016-07-04T03:19:37.878958Z",
+    "end_day": "2022-07-29T23:54:29.507639Z"
+  },
+  {
+    "promo_code": "LIBURDONG",
+    "total_amount": 11083440791.0,
+    "promo_amount": 100022741.0,
+    "count": 20019,
+    "start_day": "2016-07-09T02:12:25.213951Z",
+    "end_day": "2022-07-31T23:57:43.676395Z"
+  },
+  {
+    "promo_code": "SC2022",
+    "total_amount": 5932555380.0,
+    "promo_amount": 107563399.0,
+    "count": 10801,
+    "start_day": "2016-07-04T11:51:57.313193Z",
+    "end_day": "2022-07-29T19:22:10.590991Z"
+  },
+  {
+    "promo_code": "STARTUP",
+    "total_amount": 5907419400.0,
+    "promo_amount": 106244532.0,
+    "count": 10630,
+    "start_day": "2016-07-12T23:48:02.850252Z",
+    "end_day": "2022-07-29T23:14:01.951340Z"
+  },
+  {
+    "promo_code": "WEEKENDMANTAP",
+    "total_amount": 10640780451.0,
+    "promo_amount": 97818559.0,
+    "count": 19587,
+    "start_day": "2016-07-03T05:54:12.839715Z",
+    "end_day": "2022-07-31T23:39:12.239014Z"
+  },
+  {
+    "promo_code": "WEEKENDSERU",
+    "total_amount": 32741996152.0,
+    "promo_amount": 298097537.0,
+    "count": 60510,
+    "start_day": "2016-07-02T14:48:55.495757Z",
+    "end_day": "2022-07-31T23:58:53.821469Z"
+  },
+  {
+    "promo_code": "XX2022",
+    "total_amount": 23406312333.0,
+    "promo_amount": 213616215.0,
+    "count": 42844,
+    "start_day": "2016-07-01T02:53:26.720195Z",
+    "end_day": "2022-07-29T23:23:20.906511Z"
+  }
+]

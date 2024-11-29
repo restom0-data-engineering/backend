@@ -1,0 +1,42 @@
+{
+  "total_customers": 50705,
+  "gender_distribution": {
+    "F": 32548,
+    "M": 18157
+  },
+  "country_distribution": {
+    "Jakarta Raya": 9389,
+    "Jawa Barat": 5781,
+    "Jawa Tengah": 5599,
+    "Jawa Timur": 4925,
+    "Yogyakarta": 4018,
+    "Kalimantan Barat": 2833,
+    "Lampung": 2783,
+    "Kalimantan Tengah": 2187,
+    "Kalimantan Selatan": 2121,
+    "Kalimantan Timur": 1394,
+    "Maluku": 1288,
+    "Kepulauan Riau": 979,
+    "Bali": 751,
+    "Sumatera Barat": 690,
+    "Nusa Tenggara Barat": 675,
+    "Sulawesi Utara": 636,
+    "Sumatera Utara": 541,
+    "Sulawesi Barat": 537,
+    "Sumatera Selatan": 410,
+    "Papua": 406,
+    "Sulawesi Selatan": 348,
+    "Papua Barat": 342,
+    "Bengkulu": 341,
+    "Nusa Tenggara Timur": 274,
+    "Sulawesi Tengah": 244,
+    "Jambi": 198,
+    "Maluku Utara": 193,
+    "Gorontalo": 183,
+    "Banten": 180,
+    "Aceh": 141,
+    "Bangka Belitung": 132,
+    "Sulawesi Tenggara": 107,
+    "Riau": 79
+  }
+}
