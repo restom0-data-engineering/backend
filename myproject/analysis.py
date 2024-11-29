@@ -1,22 +1,59 @@
 import json
 import pandas as pd
+import os
 from django.http import JsonResponse
 from .views import get_hive_connection
 
 
 def customer_analysis(request):
-    # Đây là ví dụ
-    data_prime = {
-        "total_customers": [300, 200],
-        "gender_distribution": ["M", "F"],
-        "country_distribution": ["None", "Now"]
-    }
-    df = pd.DataFrame(data_prime)
-    
+    json_string = """
+    {
+  "total_customers": 50705,
+  "gender_distribution": {
+    "F": 32548,
+    "M": 18157
+  },
+  "country_distribution": {
+    "Jakarta Raya": 9389,
+    "Jawa Barat": 5781,
+    "Jawa Tengah": 5599,
+    "Jawa Timur": 4925,
+    "Yogyakarta": 4018,
+    "Kalimantan Barat": 2833,
+    "Lampung": 2783,
+    "Kalimantan Tengah": 2187,
+    "Kalimantan Selatan": 2121,
+    "Kalimantan Timur": 1394,
+    "Maluku": 1288,
+    "Kepulauan Riau": 979,
+    "Bali": 751,
+    "Sumatera Barat": 690,
+    "Nusa Tenggara Barat": 675,
+    "Sulawesi Utara": 636,
+    "Sumatera Utara": 541,
+    "Sulawesi Barat": 537,
+    "Sumatera Selatan": 410,
+    "Papua": 406,
+    "Sulawesi Selatan": 348,
+    "Papua Barat": 342,
+    "Bengkulu": 341,
+    "Nusa Tenggara Timur": 274,
+    "Sulawesi Tengah": 244,
+    "Jambi": 198,
+    "Maluku Utara": 193,
+    "Gorontalo": 183,
+    "Banten": 180,
+    "Aceh": 141,
+    "Bangka Belitung": 132,
+    "Sulawesi Tenggara": 107,
+    "Riau": 79
+  }
+}
+    """
+    data = json.loads(json_string)
     # Gửi Json Response
-    data = df.to_dict(orient="records")
     return JsonResponse(data, safe=False)
-    # Kết nối với Hive
+
     # Connect to Hive
     conn = get_hive_connection()
     query = """
@@ -62,6 +99,30 @@ def transaction_analysis(request):
 
 
 def product_analysis(request):
+    # Đây là fake data
+    json_string = """
+    {
+  "most_sold_products": {
+    "10000": 39,
+    "10001": 21,
+    "10002": 29,
+    "10003": 38,
+    "10004": 18
+  },
+  "total_revenue_by_product": {
+    "10000": 7832049,
+    "10001": 5491019,
+    "10002": 7548842,
+    "10003": 9319671,
+    "10004": 3531748
+  }
+}
+    """
+    data = json.loads(json_string)
+    # Gửi Json Response
+    return JsonResponse(data, safe=False)
+    
+    # Connect Hiveserver
     conn = get_hive_connection()
 
     # Updated Hive query to handle JSON
@@ -183,16 +244,317 @@ def multiple_analysis(request):
 
 
 def keyword_analysis(request):
-    # Đây là ví dụ
-    data_prime = {
-        "month": [1, 1, 2],
-        "search_keywords": ["None", "AZ2022", "BUYMORE"],
-        "search_count": [100, 200, 100]
+    # Đây là fakedata
+    json_string = """
+    {
+  "search_keywords": [
+    {
+      "month": "01",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 20722
+    },
+    {
+      "month": "01",
+      "search_keywords": "Tas Wanita",
+      "search_count": 10660
+    },
+    {
+      "month": "01",
+      "search_keywords": "Bekas",
+      "search_count": 9104
+    },
+    {
+      "month": "01",
+      "search_keywords": "T-Shirt",
+      "search_count": 8140
+    },
+    {
+      "month": "01",
+      "search_keywords": "Kaos",
+      "search_count": 6967
+    },
+    {
+      "month": "02",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 20345
+    },
+    {
+      "month": "02",
+      "search_keywords": "Tas Wanita",
+      "search_count": 10194
+    },
+    {
+      "month": "02",
+      "search_keywords": "Bekas",
+      "search_count": 8722
+    },
+    {
+      "month": "02",
+      "search_keywords": "T-Shirt",
+      "search_count": 7955
+    },
+    {
+      "month": "02",
+      "search_keywords": "Kaos",
+      "search_count": 6786
+    },
+    {
+      "month": "03",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 22811
+    },
+    {
+      "month": "03",
+      "search_keywords": "Tas Wanita",
+      "search_count": 11538
+    },
+    {
+      "month": "03",
+      "search_keywords": "Bekas",
+      "search_count": 9898
+    },
+    {
+      "month": "03",
+      "search_keywords": "T-Shirt",
+      "search_count": 8883
+    },
+    {
+      "month": "03",
+      "search_keywords": "Kaos",
+      "search_count": 7388
+    },
+    {
+      "month": "04",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 23727
+    },
+    {
+      "month": "04",
+      "search_keywords": "Tas Wanita",
+      "search_count": 11645
+    },
+    {
+      "month": "04",
+      "search_keywords": "Bekas",
+      "search_count": 10261
+    },
+    {
+      "month": "04",
+      "search_keywords": "T-Shirt",
+      "search_count": 8878
+    },
+    {
+      "month": "04",
+      "search_keywords": "Kaos",
+      "search_count": 7571
+    },
+    {
+      "month": "05",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 24145
+    },
+    {
+      "month": "05",
+      "search_keywords": "Tas Wanita",
+      "search_count": 12222
+    },
+    {
+      "month": "05",
+      "search_keywords": "Bekas",
+      "search_count": 10727
+    },
+    {
+      "month": "05",
+      "search_keywords": "T-Shirt",
+      "search_count": 9402
+    },
+    {
+      "month": "05",
+      "search_keywords": "Kaos",
+      "search_count": 7978
+    },
+    {
+      "month": "06",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 23814
+    },
+    {
+      "month": "06",
+      "search_keywords": "Tas Wanita",
+      "search_count": 12184
+    },
+    {
+      "month": "06",
+      "search_keywords": "Bekas",
+      "search_count": 10438
+    },
+    {
+      "month": "06",
+      "search_keywords": "T-Shirt",
+      "search_count": 9650
+    },
+    {
+      "month": "06",
+      "search_keywords": "Kaos",
+      "search_count": 8104
+    },
+    {
+      "month": "07",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 26898
+    },
+    {
+      "month": "07",
+      "search_keywords": "Tas Wanita",
+      "search_count": 13553
+    },
+    {
+      "month": "07",
+      "search_keywords": "Bekas",
+      "search_count": 11699
+    },
+    {
+      "month": "07",
+      "search_keywords": "T-Shirt",
+      "search_count": 10662
+    },
+    {
+      "month": "07",
+      "search_keywords": "Baju",
+      "search_count": 8910
+    },
+    {
+      "month": "08",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 17606
+    },
+    {
+      "month": "08",
+      "search_keywords": "Tas Wanita",
+      "search_count": 8888
+    },
+    {
+      "month": "08",
+      "search_keywords": "Bekas",
+      "search_count": 7751
+    },
+    {
+      "month": "08",
+      "search_keywords": "T-Shirt",
+      "search_count": 6853
+    },
+    {
+      "month": "08",
+      "search_keywords": "Baju",
+      "search_count": 5671
+    },
+    {
+      "month": "09",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 17704
+    },
+    {
+      "month": "09",
+      "search_keywords": "Tas Wanita",
+      "search_count": 8829
+    },
+    {
+      "month": "09",
+      "search_keywords": "Bekas",
+      "search_count": 7750
+    },
+    {
+      "month": "09",
+      "search_keywords": "T-Shirt",
+      "search_count": 6815
+    },
+    {
+      "month": "09",
+      "search_keywords": "Baju",
+      "search_count": 5895
+    },
+    {
+      "month": "10",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 19180
+    },
+    {
+      "month": "10",
+      "search_keywords": "Tas Wanita",
+      "search_count": 9450
+    },
+    {
+      "month": "10",
+      "search_keywords": "Bekas",
+      "search_count": 8429
+    },
+    {
+      "month": "10",
+      "search_keywords": "T-Shirt",
+      "search_count": 7405
+    },
+    {
+      "month": "10",
+      "search_keywords": "Baju",
+      "search_count": 6326
+    },
+    {
+      "month": "11",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 19065
+    },
+    {
+      "month": "11",
+      "search_keywords": "Tas Wanita",
+      "search_count": 9719
+    },
+    {
+      "month": "11",
+      "search_keywords": "Bekas",
+      "search_count": 8508
+    },
+    {
+      "month": "11",
+      "search_keywords": "T-Shirt",
+      "search_count": 7522
+    },
+    {
+      "month": "11",
+      "search_keywords": "Baju",
+      "search_count": 6333
+    },
+    {
+      "month": "12",
+      "search_keywords": "Dress Kondangan",
+      "search_count": 20177
+    },
+    {
+      "month": "12",
+      "search_keywords": "Tas Wanita",
+      "search_count": 9908
+    },
+    {
+      "month": "12",
+      "search_keywords": "Bekas",
+      "search_count": 8982
+    },
+    {
+      "month": "12",
+      "search_keywords": "T-Shirt",
+      "search_count": 7922
+    },
+    {
+      "month": "12",
+      "search_keywords": "Baju",
+      "search_count": 6745
     }
-    df = pd.DataFrame(data_prime)
+  ]
+}
+    """
     
     # Gửi Json Response
-    data = df.to_dict(orient="records")
+    data = json.loads(json_string)
+    # Gửi Json Response
     return JsonResponse(data, safe=False)
     # Kết nối với Hive
     conn = get_hive_connection()
